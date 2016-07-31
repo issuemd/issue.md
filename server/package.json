@@ -14,6 +14,7 @@
         "minimist": "^1.2.0"
     },
     "clients": [
+        "https://issuemd.github.io",
         "https://issuemd.surge.sh",
         "http://issue.md"
     ]
