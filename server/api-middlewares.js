@@ -7,7 +7,7 @@ module.exports = (function() {
             if (req.headers['content-type'] === 'application/json') {
                 res.setHeader('content-type', 'application/json');
                 res.end(JSON.stringify({
-                    version: package_json.version,
+                    package: package_json,
                     server_uri: process.env.NOW_URL || '/'
                 }));
             } else {

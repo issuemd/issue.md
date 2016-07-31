@@ -1,6 +1,6 @@
 {
     "name": "issue.md server",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "server for issue.md website",
     "scripts": {
         "start": "node server"

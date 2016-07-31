@@ -1,11 +1,10 @@
-var config = require('./config.js')
-
-var loaded = ko.observable(false);
+var config = { client: ko.observable(require('./config.js')), server: ko.observable(null) },
+    loaded = ko.observable(false);
 
 ko.applyBindings({
+    config: config,
     loaded: loaded
 });
-
 
 $.ajax({
     method: 'GET',
@@ -14,6 +13,7 @@ $.ajax({
         'content-type': 'application/json'
     }
 }).then(function(data) {
-    console.log(data);
+    config.server(data);
+    console.log(ko.toJS(config));
     loaded(true);
 });

@@ -25,6 +25,7 @@
                     <div><img src="img/issuemd-logo.png" alt="issue md logo"></div>
                     <div>fork me on github...</div>
                 </a>
+                <small data-bind="if: loaded">client: <span data-bind="text: config.client().package.version"></span>, server: <span data-bind="text: config.server().package.version"></span></small>
             </div>
         </div>
     </div>
