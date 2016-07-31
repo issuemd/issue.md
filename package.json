@@ -7,6 +7,7 @@
     "deploy-server": "now deploy server | node -e \"process.stdin.on('data', chunk => { var line = chunk.toString('utf8'); if(/Ready\\!/.test(line)) process.stdout.write(line.match(/(https\\:\\S+)/)[0]+'/'); });\" > SERVER_URI",
     "build-client": "cpx -C 'client/**/*.{html,png,jpg}' www && browserify -t rollupify -t bubleify -t brfs -t uglifyify client/app.js -o www/app.js",
     "deploy-client-sh": "surge -p www -d issuemd.surge.sh",
+    "gh-pages": "git add www && git commit -m 'update www' && echo committed || echo no commit && git subtree push --prefix www origin gh-pages",
     "build-deploy-all": "npm run deploy-server && npm run build-client && npm run deploy-client-sh"
   },
   "repository": {
