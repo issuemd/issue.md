@@ -1,0 +1,36 @@
+{
+  "name": "issue.md",
+  "version": "0.0.1",
+  "description": "issue.md website",
+  "scripts": {
+    "start": "node dev-server",
+    "deploy-server": "now deploy server | node -e \"process.stdin.on('data', chunk => { var line = chunk.toString('utf8'); if(/Ready\\!/.test(line)) process.stdout.write(line.match(/(https\\:\\S+)/)[0]+'/'); });\" > SERVER_URI",
+    "build-client": "cpx -C 'client/**/*.html' dist && browserify -t rollupify -t bubleify -t brfs -t uglifyify client/app.js -o dist/app.js",
+    "deploy-client-sh": "surge -p dist -d issuemd.surge.sh",
+    "build-deploy-all": "npm run deploy-server && npm run build-client && npm run deploy-client-sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/issuemd/issue.md.git"
+  },
+  "author": "Billy Moon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/issuemd/issue.md/issues"
+  },
+  "homepage": "http://issuemd.surge.sh",
+  "devDependencies": {
+    "brfs": "^1.4.3",
+    "browserify": "^13.1.0",
+    "bubleify": "^0.5.1",
+    "budo": "^8.3.0",
+    "cpx": "^1.3.2",
+    "express": "^4.14.0",
+    "minimist": "^1.2.0",
+    "now": "^0.19.0",
+    "redirectify": "^1.4.0",
+    "rollupify": "^0.3.4",
+    "surge": "^0.18.0",
+    "uglifyify": "^3.0.2"
+  }
+}

@@ -1,0 +1,19 @@
+{
+    "name": "issue.md server",
+    "version": "0.0.1",
+    "description": "server for issue.md website",
+    "scripts": {
+        "start": "node server"
+    },
+    "license": "ISC",
+    "author": "Billy Moon",
+    "homepage": "http://issue.md",
+    "dependencies": {
+        "express": "^4.14.0",
+        "minimist": "^1.2.0"
+    },
+    "clients": [
+        "https://issuemd.surge.sh",
+        "http://issue.md"
+    ]
+}

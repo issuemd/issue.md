@@ -1,8 +1,10 @@
 misc/
-issues/
+dist/
 reports/
+
 .DS_Store
 .idea
-node_modules
-bower_components
 npm-debug.log
+
+node_modules/
+bower_components/
