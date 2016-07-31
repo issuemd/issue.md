@@ -9,6 +9,7 @@
     "author": "Billy Moon",
     "homepage": "http://issue.md",
     "dependencies": {
+        "cors": "^2.7.1",
         "express": "^4.14.0",
         "minimist": "^1.2.0"
     },

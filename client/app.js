@@ -1,4 +1,4 @@
-import config from './config.es6'
+var config = require('./config.js')
 
 var loaded = ko.observable(false);
 
@@ -8,12 +8,12 @@ ko.applyBindings({
 
 
 $.ajax({
-	method: 'GET',
+    method: 'GET',
     url: config.server_uri + 'config',
     headers: {
-    	'content-type': 'application/json'
+        'content-type': 'application/json'
     }
 }).then(function(data) {
-	console.log(data);
-	loaded(true);
+    console.log(data);
+    loaded(true);
 });

@@ -11,7 +11,7 @@
         host: '0.0.0.0',
         debug: false,
         middleware: middleware,
-        browserifyArgs: ('-t rollupify -t bubleify -t [ redirectify --prefix dev- ] -t brfs').split(' ')
+        browserifyArgs: ('-t rollupify -t bubleify -t [ redirectify --suffix .dev ] -t brfs').split(' ')
     }).on('connect', function(ev) {
         console.log('listening to: ' + ev.uri);
     })
