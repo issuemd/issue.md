@@ -8,7 +8,7 @@ ko.applyBindings({
 
 $.ajax({
     method: 'GET',
-    url: config.server_uri + 'config',
+    url: config.client().server_uri + 'config',
     headers: {
         'content-type': 'application/json'
     }
