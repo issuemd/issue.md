@@ -1,15 +1,14 @@
 {
   "name": "issue.md",
-  "version": "0.0.1-alpha",
+  "version": "0.0.2",
   "description": "issue.md website",
   "scripts": {
     "start": "node dev-server",
     "deploy-server": "now deploy server | node -e \"process.stdin.on('data', chunk => { var line = chunk.toString('utf8'); if(/Ready\\!/.test(line)) process.stdout.write(line.match(/(https\\:\\S+)/)[0]+'/'); });\" > SERVER_URI",
     "build-client": "cpx -C 'client/**/*.{html,png,jpg}' www && browserify -t rollupify -t bubleify -t brfs -t uglifyify client/app.js -o www/app.js",
-    "deploy-client-sh": "surge -p www -d issuemd.surge.sh",
-    "deploy-client-gh": "git add www && git commit -m 'update www' && echo 'www changes committed' || echo 'no changes to www' && git subtree push --prefix www . gh-pages && git push origin gh-pages:gh-pages",
-    "build-deploy-client": "npm run build-client && npm run deploy-client-gh && npm run deploy-client-sh",
-    "build-deploy-all": "npm run deploy-server && npm run build-deploy-client"
+    "deploy-client-beta": "surge -p www -d issuemd.surge.sh",
+    "deploy-client-preprod": "git add www && git commit -m 'update www' && echo 'www changes committed' || echo 'no changes to www' && git subtree push --prefix www . gh-pages && git push origin gh-pages:gh-pages",
+    "deploy-client-prod": "git push git@github.com:issuemd/issuemd.github.io.git gh-pages:master"
   },
   "repository": {
     "type": "git",
