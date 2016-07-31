@@ -5,8 +5,8 @@
   "scripts": {
     "start": "node dev-server",
     "deploy-server": "now deploy server | node -e \"process.stdin.on('data', chunk => { var line = chunk.toString('utf8'); if(/Ready\\!/.test(line)) process.stdout.write(line.match(/(https\\:\\S+)/)[0]+'/'); });\" > SERVER_URI",
-    "build-client": "cpx -C 'client/**/*.{html,png,jpg}' dist && browserify -t rollupify -t bubleify -t brfs -t uglifyify client/app.js -o dist/app.js",
-    "deploy-client-sh": "surge -p dist -d issuemd.surge.sh",
+    "build-client": "cpx -C 'client/**/*.{html,png,jpg}' www && browserify -t rollupify -t bubleify -t brfs -t uglifyify client/app.js -o www/app.js",
+    "deploy-client-sh": "surge -p www -d issuemd.surge.sh",
     "build-deploy-all": "npm run deploy-server && npm run build-client && npm run deploy-client-sh"
   },
   "repository": {
