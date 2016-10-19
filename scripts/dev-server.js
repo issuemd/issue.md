@@ -2,10 +2,10 @@
 
     var argv = require('minimist')(process.argv.slice(2)),
         budo = require('budo'),
-        middleware = require('./server/api-middlewares.js');
+        middleware = require('../src/server/api-middlewares.js');
 
-    budo('client/app.js', {
-        dir: 'client',
+    budo('src/www/app.js', {
+        dir: 'src/www',
         live: true,
         port: argv.port || argv.p || 8080,
         host: '0.0.0.0',
