@@ -3,12 +3,29 @@
   "version": "0.0.2",
   "description": "issue.md website",
   "scripts": {
-    "start": "node scripts/dev-server",
     "deploy-server": "now deploy src/server | node -e \"process.stdin.on('data', chunk => { var line = chunk.toString('utf8'); if(/Ready\\!/.test(line)) process.stdout.write(line.match(/(https\\:\\S+)/)[0]+'/'); });\" > SERVER_URI",
     "build-client": "cpx -C 'src/www/**/*.{html,png,jpg}' dist/www && browserify -t rollupify -t bubleify -t brfs -t uglifyify src/www/app.js -o dist/www/app.js",
     "deploy-client-beta": "surge -p dist/www -d issuemd.surge.sh",
     "deploy-client-preprod": "git add dist/www && git commit -m 'update dist/www' && echo 'dist/www changes committed' || echo 'no changes to dist/www' && git subtree push --prefix dist/www . gh-pages && git push origin gh-pages:gh-pages",
-    "deploy-client-prod": "git push git@github.com:issuemd/issuemd.github.io.git gh-pages:master"
+    "deploy-client-prod": "git push git@github.com:issuemd/issuemd.github.io.git gh-pages:master",
+    "start": "npm i && run-s build:lib build:parser && run-p serve watch:parser watch:test website:server",
+    "website:server": "node scripts/dev-server",
+    "serve": "node scripts/express",
+    "test": "run-s test:*",
+    "test:unit": "mocha --require babel-core/register test/unit --recursive",
+    "test:lint": "jshint src test",
+    "build": "run-p build:lib build:parser && run-s build:issuemd",
+    "build:lib": "node scripts/lib-builder.js",
+    "build:parser": "pegjs -e 'var parser; export default parser' < src/issuemd/parser.pegjs > lib/issuemd-parser.js",
+    "build:issuemd-echo": "rollup -f umd -n issuemd src/issuemd/core.js",
+    "build:issuemd": "npm run build:issuemd-echo --silent | buble | uglifyjs > issuemd.min.js && replace __ISSUEMD_VERSION__ $npm_package_version issuemd.min.js",
+    "watch:parser": "nodemon -w src/issuemd -e pegjs -x 'npm run build:parser'",
+    "watch:test": "nodemon -w src -w test/unit -e js -x 'npm run test:unit -- --reporter dot'",
+    "watch:coverage": "nodemon -w src -w test/unit -e js -x 'npm run reports:coverage'",
+    "reports": "run-s reports:*",
+    "reports:coverage": "istanbul cover --report text --report json-summary --report html --dir reports/coverage -x 'lib/**' _mocha -- --require babel-core/register test/unit --recursive",
+    "reports:plato": "plato -d reports/plato 'src/**'",
+    "env": "env"
   },
   "repository": {
     "type": "git",
@@ -20,6 +37,11 @@
     "url": "https://github.com/issuemd/issue.md/issues"
   },
   "homepage": "http://issuemd.surge.sh",
+  "dependencies": {
+    "blueimp-md5": "^2.1.0",
+    "marked": "0.3.5",
+    "mustache": "^2.2.0"
+  },
   "devDependencies": {
     "brfs": "^1.4.3",
     "browserify": "^13.1.0",
@@ -33,6 +55,25 @@
     "redirectify": "^1.4.0",
     "rollupify": "^0.3.4",
     "surge": "^0.18.0",
-    "uglifyify": "^3.0.2"
+    "uglifyify": "^3.0.2",
+    "babel-cli": "^6.16.0",
+    "babel-preset-es2015": "^6.16.0",
+    "babel-require": "^1.0.1",
+    "buble": "^0.14.0",
+    "chai": "^3.5.0",
+    "fs-extra": "^0.30.0",
+    "istanbul": "^1.0.0-alpha.2",
+    "jshint": "^2.9.1-rc1",
+    "mocha": "^3.1.0",
+    "node-babel": "^0.1.2",
+    "nodemon": "^1.10.2",
+    "npm-run-all": "^3.0.0",
+    "pegjs": "^0.9.0",
+    "plato": "^1.7.0",
+    "replace": "^0.3.0",
+    "rollup": "^0.34.10",
+    "sinon": "^1.17.6",
+    "tiny-lr": "^0.2.1",
+    "uglify-js": "^2.7.3"
   }
 }

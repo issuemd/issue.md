@@ -1,10 +1,12 @@
+'use strict';
+
 var app = require('express')(),
-    package_json = require('./package.json'),
+    packageJson = require('./package.json'),
     cors = require('cors');
 
 var corsMiddleware = cors({
     origin: function(origin, callback) {
-        callback(null, package_json.clients.indexOf(origin) !== -1);
+        callback(null, packageJson.clients.indexOf(origin) !== -1);
     }
 });
 

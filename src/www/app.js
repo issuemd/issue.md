@@ -1,3 +1,5 @@
+'use strict';
+
 var config = { client: ko.observable(require('./config.js')), server: ko.observable(null) },
     loaded = ko.observable(false);
 
@@ -8,7 +10,7 @@ ko.applyBindings({
 
 $.ajax({
     method: 'GET',
-    url: config.client().server_uri + 'config',
+    url: config.client().serverURI + 'config',
     headers: {
         'content-type': 'application/json'
     }

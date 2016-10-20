@@ -1,0 +1,48 @@
+[
+  {
+    "original": {
+      "title": "Some issue title",
+      "created": "2016-10-11T21:03:29.711+0000",
+      "creator": "Some Guy",
+      "meta": [
+        {
+          "key": "id",
+          "value": "11"
+        }
+      ],
+      "body": "some issue content"
+    },
+    "updates": [
+      {
+        "modified": "2016-10-14T21:02:23.741+0000",
+        "modifier": "Some Guy",
+        "type": "comment",
+        "meta": [],
+        "body": "some comment"
+      }
+    ]
+  },
+  {
+    "original": {
+      "title": "Some other issue title",
+      "created": "2016-10-16T23:01:23.731+0000",
+      "creator": "Some Other Guy",
+      "meta": [
+        {
+          "key": "id",
+          "value": "13"
+        }
+      ],
+      "body": "some other issue content"
+    },
+    "updates": [
+      {
+        "modified": "2016-11-17T20:03:25.441+0000",
+        "modifier": "Some Other Guy",
+        "type": "comment",
+        "meta": [],
+        "body": "some other comment"
+      }
+    ]
+  }
+]
