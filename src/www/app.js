@@ -1,6 +1,11 @@
 'use strict';
 
-var config = { client: ko.observable(require('./config.js')), server: ko.observable(null) },
+import clientConfig from './config.js';
+
+var config = {
+        client: ko.observable(clientConfig),
+        server: ko.observable(null)
+    },
     loaded = ko.observable(false);
 
 ko.applyBindings({

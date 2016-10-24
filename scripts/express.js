@@ -58,8 +58,10 @@ app.get('/api/issue/:id', function(req, res) {
 });
 
 app.get('/', function(req, res) {
-    res.end(fs.readFileSync(path.join(__dirname, '..', 'src', 'www', 'dev.html'), 'utf8'));
+    res.end(fs.readFileSync(path.join(__dirname, '..', 'src', 'www', 'develop.html'), 'utf8'));
 });
+
+app.get('/config', require('../src/server/api-middlewares.js'));
 
 app.get('/readme.md', function(req, res) {
     res.end(fs.readFileSync(path.join(__dirname, '..', 'readme.md'), 'utf8'));
@@ -72,6 +74,16 @@ app.get('/issuemd.min.js', function(req, res) {
 app.get('/issuemd.js', function(req, res) {
     var stdout = new BufferStream();
     runAll('build:issuemd-echo', {
+        silent: true,
+        stdout: stdout
+    }).then(results => {
+        res.end(stdout.value);
+    });
+});
+
+app.get('/app.js', function(req, res) {
+    var stdout = new BufferStream();
+    runAll('build:app-echo', {
         silent: true,
         stdout: stdout
     }).then(results => {
