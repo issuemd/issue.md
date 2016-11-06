@@ -6,54 +6,89 @@ var fs = require('fs'),
     nodemon = require('nodemon'),
     marked = require('marked'),
     runAll = require("npm-run-all"),
-    BufferStream = require('./lib/buffer-stream.js');
+    BufferStream = require('./lib/buffer-stream.js'),
+    session = require('express-session');
+
+require('babel-register');
 
 //
 
 var config = {
     port: 8080,
     host: '0.0.0.0',
-    www: ['src/www', 'src/issuemd-plugins'],
+    www: ['src/www', 'src/issuemd/plugins'],
     docs: ['docs', 'reports']
 };
 
 var app = express();
 
-var issuemd;
+app.use(session({
+  secret: 'keyboard catastrophe',
+  resave: false,
+  saveUninitialized: true
+}));
+
+global.issuemd = requireFresh('../src/issuemd/core.js').default;
+requireFresh('../src/issuemd/plugins/issuemd-github.js');
+global.Chance = require('../src/lib/chance.js');
+global._ = require('lodash');
+requireFresh('../src/issuemd/plugins/issuemd-chance.js');
 
 //
 
 app.get('/api/issue/:id', function(req, res) {
 
-    var stdout = new BufferStream();
+    global.issuemd = requireFresh('../src/issuemd/core.js').default;
+    requireFresh('../src/issuemd/plugins/issuemd-github.js');
+    requireFresh('../src/issuemd/plugins/issuemd-chance.js');
 
-    runAll('build:issuemd-echo', {
-        silent: true,
-        stdout: stdout
-    }).then(results => {
-        eval(stdout.value);
-        issuemd = module.exports;
-        Chance = require('../lib/chance.js');
-        _ = require('lodash');
-        eval(fs.readFileSync(__dirname + '/../src/issuemd-plugins/issuemd-chance.js', 'utf8'));
-        var out,
-            issue = issuemd().chance(1, req.params.id);
-        if (req.params.id) {
-            issue.id(req.params.id);
-        }
-        if (req.query.format === 'html') {
-            out = issue.html();
-        } else if (req.query.format === 'md') {
-            out = issue.md();
-        } else if (req.query.format === 'summary') {
-            out = issue.summary();
-        } else if (req.query.format === 'string') {
-            out = issue.toString();
-        } else {
-            out = JSON.stringify(issue);
-        }
-        res.end(out);
-    });
+    var out,
+        issue = issuemd().chance(1, req.params.id);
+    if (req.params.id) {
+        issue.id(req.params.id);
+    }
+    if (req.query.format === 'html') {
+        out = issue.html();
+    } else if (req.query.format === 'md') {
+        out = issue.md();
+    } else if (req.query.format === 'summary') {
+        out = issue.summary();
+    } else if (req.query.format === 'string') {
+        out = issue.toString();
+    } else {
+        out = JSON.stringify(issue);
+    }
+    res.end(out);
+
+    // var stdout = new BufferStream();
+
+    // runAll('build:issuemd-echo', {
+    //     silent: true,
+    //     stdout: stdout
+    // }).then(results => {
+    //     eval(stdout.value);
+    //     issuemd = module.exports;
+    //     Chance = require('../lib/chance.js');
+    //     _ = require('lodash');
+    //     eval(fs.readFileSync(__dirname + '/../src/issuemd-plugins/issuemd-chance.js', 'utf8'));
+    //     var out,
+    //         issue = issuemd().chance(1, req.params.id);
+    //     if (req.params.id) {
+    //         issue.id(req.params.id);
+    //     }
+    //     if (req.query.format === 'html') {
+    //         out = issue.html();
+    //     } else if (req.query.format === 'md') {
+    //         out = issue.md();
+    //     } else if (req.query.format === 'summary') {
+    //         out = issue.summary();
+    //     } else if (req.query.format === 'string') {
+    //         out = issue.toString();
+    //     } else {
+    //         out = JSON.stringify(issue);
+    //     }
+    //     res.end(out);
+    // });
 
 });
 
@@ -123,3 +158,10 @@ nodemon({
 process.once('SIGINT', function() {
     process.exit(0);
 });
+
+//
+
+function requireFresh (src) {
+    delete require.cache[require.resolve(src)];
+    return require(src);
+}

@@ -1,6 +1,6 @@
 'use strict';
 
-import clientConfig from './config.js';
+import clientConfig from './config.json';
 
 var config = {
         client: ko.observable(clientConfig),

@@ -3,8 +3,8 @@
 import * as utils from '../utils';
 import * as methods from './methods.js';
 import { htmlTemplate, mdTemplate, issueSummaryTemplate, collectionSummaryTemplate } from './templates';
-import marked from '../../lib/marked';
-import mustache from '../../lib/mustache';
+import marked from '../lib/marked';
+import mustache from '../lib/mustache';
 
 
 var issuemdFormatter = {

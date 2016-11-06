@@ -1,7 +1,7 @@
 'use strict';
 
 import * as utils from '../utils';
-import md5 from '../../lib/md5';
+import md5 from '../lib/md5';
 
 // helper function ensures consistant signature creation
 export function composeSignature(creator, created) {

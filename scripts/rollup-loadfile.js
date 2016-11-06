@@ -20,7 +20,7 @@ function loadfile() {
         name: 'loadfile',
         transform(code, id) {
 
-            if (path.relative(__dirname, id) === '../src/www/config.js') {
+            if (path.relative(__dirname, id) === '../src/www/config.json') {
                 var config = JSON.parse(code);
                 if(process.env.PROD) {
                     config.serverURI = fs.readFileSync(__dirname + '/../SERVER_URI', 'utf8');

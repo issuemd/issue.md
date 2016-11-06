@@ -7,7 +7,7 @@ import * as utils from '../utils';
 import * as helpers from './helpers';
 
 // issuemd modules
-import issuemdParser from '../../lib/issuemd-parser';
+import issuemdParser from '../lib/issuemd-parser';
 
 export * from './extensions.js';
 
