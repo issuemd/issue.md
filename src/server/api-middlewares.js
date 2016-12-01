@@ -17,8 +17,8 @@ module.exports = (function() {
                 next();
             }
         },
-        function(req, res, next) {
-            var sess = req.session
+        function(req, res) {
+            var sess = req.session;
             if (sess.views) {
                 sess.views++;
                 res.setHeader('Content-Type', 'text/html');

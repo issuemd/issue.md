@@ -7,14 +7,15 @@ var fs = require('fs'),
     marked = require('marked'),
     runAll = require("npm-run-all"),
     BufferStream = require('./lib/buffer-stream.js'),
-    session = require('express-session');
+    session = require('express-session'),
+    argv = require('minimist')(process.argv.slice(2));
 
 require('babel-register');
 
 //
 
 var config = {
-    port: 8080,
+    port: argv.port || 8080,
     host: '0.0.0.0',
     www: ['src/www', 'src/issuemd/plugins'],
     docs: ['docs', 'reports']

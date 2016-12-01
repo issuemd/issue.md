@@ -9,18 +9,8 @@
     <!-- cyborg,journal,readable,spacelab,darkly,lumen,sandstone,superhero,cerulean,flatly,simplex,united,cosmo,paper,slate,yeti -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/g/bootswatch(darkly/bootstrap.min.css)">
     <style>
-    body {
+    .sample-issue {
         margin-top: 1em;
-    }
-    
-    p,
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        margin: 0 0 20px 0;
     }
     </style>
     <link rel="stylesheet" href="issuemd-style.css">
@@ -31,18 +21,29 @@
         <div class="row">
             <div class="col-sm-8">
                 <h1>issue md</h1>
-                <a class="btn btn-primary" href="/index.html">index.html</a>
-                <a class="btn btn-primary" href="/docs">docs</a>
-                <img id="topper"/>
+                <div class='btn-group'>
+                    <a class="btn btn-primary" href="/index.html">index.html</a><a class="btn btn-primary" href="/docs">docs</a>
+                </div>
                 <div class="sample-issue"></div>
             </div>
+        </div>
+        <div class="row">
+            <div id="reactapp" class="col-sm-12"></div>
         </div>
     </div>
     <!-- <script src="issuemd.min.js"></script> -->
     <script src="issuemd.js"></script>
-    <!-- chance,momentjs,sugar,knockout,bootstrap,lodash,hammerjs,chartist.js,ion.rangeslider,issuemd -->
-    <script src="//cdn.jsdelivr.net/g/jquery@2,underscorejs,chance"></script>
+    <!-- chance,momentjs,sugar,knockout,bootstrap,lodash,hammerjs,chartist.js,ion.rangeslider,raven,react(react.min.js+react-dom.min.js,issuemd -->
+    <script src="//cdn.jsdelivr.net/g/jquery@2,underscorejs,chance,raven,react(react.min.js+react-dom.min.js)"></script>
+    <script>
+        /* global Raven */
+        'use strict';
+        Raven.config('https://df3c2132cd6a4cdeb7de6de54e7608f0@sentry.io/112367', {
+            release: '0.0.3-alpha'
+        }).install();
+    </script>
     <script src="/issuemd-chance.js"></script>
+    <!-- <script src="/issuemd-github.js"></script> -->
     <script>
     'use strict';
     /* global $,issuemd */
@@ -50,8 +51,9 @@
 
         console.log(issuemd.version);
 
-        $.get('/api/issue/TRO-111/?format=string').then(data => {
+        $.get('/api/issue/TRO-111/?format=md').then(data => {
             console.log(data);
+            $('.sample-issue').html(issuemd(data).html())
         });
 
     });
