@@ -14,7 +14,7 @@
     "test:lint": "jshint --exclude src/lib src test",
     "build": "run-p build:lib build:parser && run-s build:issuemd",
     "build:lib": "node scripts/lib-builder.js",
-    "build:parser": "pegjs -e 'var parser; export default parser' < src/issuemd/parser.pegjs > src/lib/issuemd-parser.js",
+    "build:parser": "pegjs -e '/* eslint-disable */\nvar parser; export default parser' < src/issuemd/parser.pegjs > src/lib/issuemd-parser.js",
     "build:issuemd-echo": "rollup -f umd -n issuemd src/issuemd/core.js",
     "build:issuemd": "npm run build:issuemd-echo --silent | buble | uglifyjs > issuemd.min.js && replace __ISSUEMD_VERSION__ $npm_package_version issuemd.min.js",
     "build:app-echo": "rollup -f umd -n app -c scripts/rollup-loadfile.js src/www/app.js",
@@ -39,6 +39,7 @@
   "homepage": "http://issuemd.surge.sh",
   "dependencies": {
     "blueimp-md5": "^2.1.0",
+    "chance": "^1.0.4",
     "marked": "0.3.5",
     "mustache": "^2.2.0"
   },

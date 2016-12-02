@@ -1,11 +1,9 @@
-/* globals issuemd */
+/* global issuemd */
 
 issuemd.fn.github = function (identifier) {
+  'use strict'
 
-    'use strict';
+  console.log(identifier)
 
-    console.log(identifier);
-
-    return this;
-
-};
+  return this
+}

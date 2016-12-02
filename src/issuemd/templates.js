@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 export var htmlTemplate = `{{#data}}
 <div class="issue">{{#original}}
@@ -28,7 +28,7 @@ export var htmlTemplate = `{{#data}}
     </div>{{/updates}}
   </div>
 </div>
-{{/data}}`;
+{{/data}}`
 
 export var mdTemplate = `{{! use triple '{'s for title/value/body to retain special characters }}
 {{#.}}{{#original}}
@@ -56,8 +56,7 @@ export var mdTemplate = `{{! use triple '{'s for title/value/body to retain spec
 {{{body}}}
 
 {{/body}}{{/updates}}
-{{/.}}`;
-
+{{/.}}`
 
 // TODO: figure out how to have one instead of two blank lines for empty body
 export var issueSummaryTemplate = `{{#data}}
@@ -87,7 +86,7 @@ export var issueSummaryTemplate = `{{#data}}
 {{/body}}
 {{/comments}}
 {{#util.bsep}}+-{{#util.pad}}-{{/util.pad}}-+{{/util.bsep}}
-{{/data}}`;
+{{/data}}`
 
 export var collectionSummaryTemplate = `{{#util.hsep}}+-{{#util.pad}}-{{/util.pad}}-+{{/util.hsep}}
 {{#util.hsep}}| {{/util.hsep}}{{#util.htext}}{{#util.body}}ID     Assignee     Status       Title{{/util.body}}{{/util.htext}}{{#util.hsep}} |{{/util.hsep}}
@@ -95,4 +94,4 @@ export var collectionSummaryTemplate = `{{#util.hsep}}+-{{#util.pad}}-{{/util.pa
 {{#data}}
 {{#util.bsep}}| {{/util.bsep}}{{#util.btext}}{{#util.curtailed}}{{#util.body}}{{#util.pad6}}{{{id}}}{{/util.pad6}} {{#util.pad12}}{{{assignee}}}{{/util.pad12}} {{#util.pad12}}{{{status}}}{{/util.pad12}} {{{title}}}{{/util.body}}{{/util.curtailed}}{{/util.btext}}{{#util.bsep}} |{{/util.bsep}}
 {{/data}}
-{{#util.bsep}}+-{{#util.pad}}-{{/util.pad}}-+{{/util.bsep}}`;
+{{#util.bsep}}+-{{#util.pad}}-{{/util.pad}}-+{{/util.bsep}}`

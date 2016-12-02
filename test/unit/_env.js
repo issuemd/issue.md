@@ -1,11 +1,12 @@
-'use strict';
+'use strict'
 
-var fs = require('fs');
+var fs = require('fs')
+var path = require('path')
 
 // define globals accessible in all tests
-global.assert = require('chai').assert;
-global.sinon = require('sinon');
+global.assert = require('chai').assert
+global.sinon = require('sinon')
 
 global.loadFixture = filename => {
-    return fs.readFileSync(__dirname + '/../fixtures/' + filename, 'utf8');
-};
+  return fs.readFileSync(path.join(__dirname, '..', 'fixtures', filename), 'utf8')
+}

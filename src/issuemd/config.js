@@ -1,7 +1,7 @@
-'use strict';
+'use strict'
 
 var config = {
-    version: '0.0.1'
-};
+  version: '0.0.1'
+}
 
-export default config;
+export default config
