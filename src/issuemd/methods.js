@@ -11,9 +11,7 @@ import issuemdParser from '../lib/issuemd-parser'
 
 export * from './extensions.js'
 
-/**********************
- * collection methods *
- **********************/
+/* collection methods */
 
 // methods to use as native overrides
 // ... also `function collectionToString` defined further down
@@ -312,9 +310,7 @@ export function sortUpdates (collection) {
   return collection
 }
 
-/***********************
- * supporting funtions *
- ***********************/
+/* supporting funtions */
 
 function Issue () {}
 

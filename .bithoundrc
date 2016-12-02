@@ -16,5 +16,13 @@
     "**/tests/**",
     "**/spec/**",
     "**/specs/**"
-  ]
+  ],
+  "dependencies": {
+    "unused-ignores": [
+      "chance",
+      "blueimp-md5",
+      "marked",
+      "mustache"
+    ]
+  }
 }

@@ -251,9 +251,7 @@ function curtail (input, width) {
   return input.length > width ? input.slice(0, width - 3) + '...' : input
 }
 
-/**********************
- * collection methods *
- **********************/
+/* collection methods */
 
 // requiring formatter/utils
 
