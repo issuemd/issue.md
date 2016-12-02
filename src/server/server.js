@@ -9,7 +9,7 @@ var session = require('express-session')
 
 require('babel-register')
 
-issuemd = require('../issuemd/core.js').default
+global.issuemd = require('../issuemd/core.js').default
 
 var corsMiddleware = cors({
   origin: function (origin, callback) {
