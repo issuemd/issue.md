@@ -12,6 +12,7 @@
     "test": "run-s test:*",
     "test:unit": "mocha --require babel-core/register test/unit --recursive",
     "test:lint": "cd src && standard && cd ../test && standard",
+    "test:coverage": "istanbul cover --report text --report json-summary --report html --dir coverage -x 'src/lib/**' _mocha -- --require babel-core/register test/unit --recursive",
     "build": "run-p build:lib build:parser && run-s build:issuemd",
     "build:lib": "node scripts/lib-builder.js",
     "build:parser": "pegjs -e '/* eslint-disable */\nvar parser; export default parser' < src/issuemd/parser.pegjs > src/lib/issuemd-parser.js",
@@ -21,10 +22,7 @@
     "build:client": "cpx -C 'src/www/**/!(*.js|develop.html)*' dist/www && PROD=true npm run build:app-echo --silent | buble | uglifyjs > dist/www/app.js",
     "watch:parser": "nodemon -w src/issuemd -e pegjs -x 'npm run build:parser'",
     "watch:test": "nodemon -w src -w test/unit -e js -x 'npm run test:unit -- --reporter dot'",
-    "watch:coverage": "nodemon -w src -w test/unit -e js -x 'npm run reports:coverage'",
-    "reports": "run-s reports:*",
-    "reports:coverage": "istanbul cover --report text --report json-summary --report html --dir reports/coverage -x 'src/lib/**' _mocha -- --require babel-core/register test/unit --recursive",
-    "reports:plato": "plato -d reports/plato 'src/*' 'src/!(lib)/**'",
+    "watch:coverage": "nodemon -w src -w test/unit -e js -x 'npm run test:coverage'",
     "env": "env"
   },
   "repository": {
@@ -66,7 +64,6 @@
     "now": "^0.33.1",
     "npm-run-all": "^3.0.0",
     "pegjs": "^0.9.0",
-    "plato": "^1.7.0",
     "raven-js": "^3.8.0",
     "redirectify": "^1.4.0",
     "replace": "^0.3.0",

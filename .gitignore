@@ -1,5 +1,4 @@
 misc/
-reports/
 
 .DS_Store
 ._.DS_Store
@@ -7,5 +6,6 @@ reports/
 npm-debug.log
 
 node_modules/
+coverage/
 bower_components/
 lib/
