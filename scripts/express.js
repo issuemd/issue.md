@@ -31,7 +31,7 @@ app.use(session({
 
 global.issuemd = requireFresh('../src/issuemd/core.js').default
 requireFresh('../src/issuemd/plugins/issuemd-github.js')
-global.Chance = require('../src/lib/chance.js')
+global.Chance = require('../src/lib/chance.js').default
 global._ = require('lodash')
 requireFresh('../src/issuemd/plugins/issuemd-chance.js')
 
@@ -62,36 +62,6 @@ app.get('/api/issue/:id', function (req, res) {
   }
 
   res.end(out)
-
-    // var stdout = new BufferStream();
-
-    // runAll('build:issuemd-echo', {
-    //     silent: true,
-    //     stdout: stdout
-    // }).then(results => {
-    //     eval(stdout.value);
-    //     issuemd = module.exports;
-    //     Chance = require('../lib/chance.js');
-    //     _ = require('lodash');
-    //     eval(fs.readFileSync(__dirname + '/../src/issuemd-plugins/issuemd-chance.js', 'utf8'));
-    //     var out,
-    //         issue = issuemd().chance(1, req.params.id);
-    //     if (req.params.id) {
-    //         issue.id(req.params.id);
-    //     }
-    //     if (req.query.format === 'html') {
-    //         out = issue.html();
-    //     } else if (req.query.format === 'md') {
-    //         out = issue.md();
-    //     } else if (req.query.format === 'summary') {
-    //         out = issue.summary();
-    //     } else if (req.query.format === 'string') {
-    //         out = issue.toString();
-    //     } else {
-    //         out = JSON.stringify(issue);
-    //     }
-    //     res.end(out);
-    // });
 })
 
 app.get('/', function (req, res) {

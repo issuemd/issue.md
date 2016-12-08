@@ -36,27 +36,25 @@
     <!-- chance,momentjs,sugar,knockout,bootstrap,lodash,hammerjs,chartist.js,ion.rangeslider,raven,react(react.min.js+react-dom.min.js,issuemd -->
     <script src="//cdn.jsdelivr.net/g/jquery@2,underscorejs,chance,raven,react(react.min.js+react-dom.min.js)"></script>
     <script>
-        /* global Raven */
-        'use strict';
-        Raven.config('https://df3c2132cd6a4cdeb7de6de54e7608f0@sentry.io/112367', {
-            release: '0.0.3-alpha'
-        }).install();
+      /* global Raven */
+      'use strict'
+      Raven.config('https://df3c2132cd6a4cdeb7de6de54e7608f0@sentry.io/112367', {
+        release: '0.0.3-alpha'
+      }).install()
     </script>
     <script src="/issuemd-chance.js"></script>
     <!-- <script src="/issuemd-github.js"></script> -->
     <script>
-    'use strict';
+    'use strict'
     /* global $,issuemd */
-    $(function() {
+    $(function () {
+      console.log(issuemd.version)
 
-        console.log(issuemd.version);
-
-        $.get('/api/issue/TRO-111/?format=md').then(data => {
-            console.log(data);
-            $('.sample-issue').html(issuemd(data).html())
-        });
-
-    });
+      $.get('/api/issue/TRO-111/?format=md').then(data => {
+        console.log('\n' + issuemd(data).toString(70))
+        $('.sample-issue').html(issuemd(data).html())
+      })
+    })
     </script>
     <script src="/livereload.js"></script>
 </body>
