@@ -1,5 +1,7 @@
 ## issue md
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/issuemd/issue.md.svg)](https://greenkeeper.io/)
+
 es2015 rework of issuemd
 
 ## setup and run dev environment
