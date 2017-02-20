@@ -2,8 +2,8 @@
 
 'use strict'
 
-import issuemd from '../../../src/issuemd/core.js'
-import * as methods from '../../../src/issuemd/methods.js'
+import issuemd from '../../../components/issuemd/core.js'
+import * as methods from '../../../components/issuemd/methods.js'
 
 describe('file:issuemd/methods.js', () => {
   var collection

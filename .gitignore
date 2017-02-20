@@ -1,9 +1,10 @@
 misc/
-src/lib/
+components/lib/
 
 .DS_Store
 ._.DS_Store
 .idea
+.next
 npm-debug.log
 
 node_modules/

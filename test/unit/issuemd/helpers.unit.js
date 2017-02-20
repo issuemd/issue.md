@@ -2,7 +2,7 @@
 
 'use strict'
 
-import * as helpers from '../../../src/issuemd/helpers.js'
+import * as helpers from '../../../components/issuemd/helpers.js'
 
 describe('file:issuemd/helpers.js', () => {
   describe('hash calculates correctly', () => {

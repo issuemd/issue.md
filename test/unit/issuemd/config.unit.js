@@ -2,7 +2,7 @@
 
 'use strict'
 
-import config from '../../../src/issuemd/config.js'
+import config from '../../../components/issuemd/config.js'
 
 describe('file:issuemd/config.js', () => {
   describe('issuemd config', () => {

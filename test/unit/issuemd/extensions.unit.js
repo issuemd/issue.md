@@ -2,8 +2,8 @@
 
 'use strict'
 
-import issuemd from '../../../src/issuemd/core.js'
-import * as extensions from '../../../src/issuemd/extensions.js'
+import issuemd from '../../../components/issuemd/core.js'
+import * as extensions from '../../../components/issuemd/extensions.js'
 
 describe('file:issuemd/extensions.js', () => {
   var collection

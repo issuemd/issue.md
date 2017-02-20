@@ -2,7 +2,7 @@
 
 'use strict'
 
-import * as utils from '../../src/utils.js'
+import * as utils from '../../components/utils.js'
 
 describe('file:utils.js', () => {
   describe('getLastArgument function', () => {

@@ -32,13 +32,13 @@ export function toJSON (collection) {
 // requiring parser/helpers/utils
 
 export function main (ignore, arr) {
-    // if collection passed in, just return it without further ado
+  // if collection passed in, just return it without further ado
   if (arr instanceof issuemd.fn.constructor) {
     return arr
   }
 
-    // we don't care if you supply array of arguments, or multiple arguments
-    // just coerce into array...
+  // we don't care if you supply array of arguments, or multiple arguments
+  // just coerce into array...
   if (utils.type(arr) !== 'array') {
     arr = [].slice.call(arguments, 1)
   }
@@ -49,7 +49,7 @@ export function main (ignore, arr) {
     if (utils.type(arr[i]) === 'string') {
       var parsed = issuemdParser.parse(arr[i])
       utils.each(parsed, parsedHandler)
-            // TODO: better test for issue json
+      // TODO: better test for issue json
     } else if (arr[i].original) {
       issues.push(createIssue(arr[i]))
     } else {
@@ -69,7 +69,7 @@ export function main (ignore, arr) {
 export function merge (collection, input) {
   var hashes = collection.hash(true)
 
-    // TODO: better test if input is md - perhaps move logic to formatter
+  // TODO: better test if input is md - perhaps move logic to formatter
   utils.each(utils.type(input) === 'string' ? issuemd(input) : input, function (issue) {
     var idx
     var merged = false
@@ -91,13 +91,13 @@ export function merge (collection, input) {
 // requiring helpers/utils
 
 export function attr (collection, attrs) {
-    // TODO: should this method exclude `body`?
+  // TODO: should this method exclude `body`?
   if (!attrs) {
     return helpers.issueJsonToLoose(collection.toArray()[0])
   } else if (utils.type(attrs) === 'string') {
     return collection.attr()[attrs]
   } else {
-        // TODO: test this function
+    // TODO: test this function
     utils.each(collection, function (issue) {
       var issueJsonIn = helpers.looseJsonToIssueJson(attrs, true)
       issueJsonIn.original.meta = issue.original.meta.concat(issueJsonIn.original.meta)

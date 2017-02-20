@@ -2,8 +2,8 @@
 
 'use strict'
 
-import issuemd from '../../../src/issuemd/core.js'
-import * as formatter from '../../../src/issuemd/formatter.js'
+import issuemd from '../../../components/issuemd/core.js'
+import * as formatter from '../../../components/issuemd/formatter.js'
 
 describe('file:issuemd/formatter.js', () => {
   var collection

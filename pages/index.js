@@ -2,6 +2,8 @@
 import React from 'react'
 import Head from 'next/head'
 
+import issuemd from '../components/issuemd/core.js'
+
 export default class Main extends React.Component {
 
   constructor (props) {
@@ -13,10 +15,12 @@ export default class Main extends React.Component {
   }
 
   componentDidMount () {
-    fetch('/config').then(r => r.json()).then(config => this.setState({
-      server: config.version,
-      issuemd: issuemd.version
-    }))
+    global.issuemd = issuemd
+    console.log(issuemd({title: 'cool'}).md())
+    // fetch('/config').then(r => r.json()).then(config => this.setState({
+    //   server: config.version,
+    //   issuemd: issuemd.version
+    // }))
   }
 
   render () {
@@ -25,7 +29,6 @@ export default class Main extends React.Component {
       <div>
         <Head>
           <title>issue.md website</title>
-          <script src='/issuemd.min.js' />
         </Head>
         <div className='container'>
           <div className='row'>

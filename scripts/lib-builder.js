@@ -1,4 +1,4 @@
-var fs = require('fs-extra')
+var fs = require('fs-dot')
 var path = require('path')
 
 var packageJson = require('../package.json')
@@ -6,7 +6,7 @@ var packageJson = require('../package.json')
 for (var i in packageJson.dependencies) {
   var localPackageJson = require(i + '/package.json')
   var sourceFile = path.resolve(path.join('node_modules', i, localPackageJson.main))
-  var targetFile = path.join('src', 'lib', path.basename(sourceFile))
+  var targetFile = path.join('components', 'lib', path.basename(sourceFile))
   var libWrapperTemplate = `
 /* eslint-disable */
 /* istanbul ignore next */

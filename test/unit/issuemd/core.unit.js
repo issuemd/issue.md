@@ -2,7 +2,7 @@
 
 'use strict'
 
-import issuemd from '../../../src/issuemd/core.js'
+import issuemd from '../../../components/issuemd/core.js'
 
 describe('file:issuemd/core.js', () => {
   describe('issuemd core initialises', () => {
