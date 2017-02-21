@@ -1,4 +1,5 @@
-/* globals issuemd fetch */
+/* globals */
+// issuemd fetch
 import React from 'react'
 import Head from 'next/head'
 

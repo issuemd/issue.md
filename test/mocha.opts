@@ -1,3 +1,0 @@
---require test/mocha-env.js
---require babel-core/register
---recursive
