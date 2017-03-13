@@ -71,7 +71,7 @@
     "rollup-pluginutils": "^2.0.1",
     "rollupify": "^0.3.4",
     "sinon": "^1.17.6",
-    "standard": "^8.6.0",
+    "standard": "^9.0.0",
     "surge": "^0.18.0",
     "tiny-lr": "^1.0.3",
     "uglify-js": "^2.7.3",
