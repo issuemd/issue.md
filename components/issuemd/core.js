@@ -9,7 +9,7 @@ export default function issuemd () {
   return issuemd.fn.main.apply(null, arguments)
 }
 
-issuemd.version = '__ISSUEMD_VERSION__'
+issuemd.version = '__DEVELOPMENT_VERSION__'
 
 issuemd.fn = Issuemd.prototype = {
 

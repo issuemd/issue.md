@@ -1,7 +1,9 @@
-/* globals issuemd fetch */
+/* globals fetch */
 import React from 'react'
 import Head from 'next/head'
 import { Well } from '../../components'
+
+import issuemd from '../../components/issuemd/core.js'
 
 export default class Main extends React.Component {
 

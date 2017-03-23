@@ -1,19 +1,19 @@
 {
   "name": "issue.md",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "issue.md website",
   "scripts": {
-    "start": "next build && next start",
-    "dev": "next",
+    "start": "node server",
     "test": "npm run test:unit && npm run test:lint && npm run test:coverage",
     "test:unit": "jest",
     "test:lint": "standard '{components,scripts,test,pages}/**/*.js'",
     "test:coverage": "jest --coverage",
-    "build": "npm run build:lib && npm run build:parser && npm run build:issuemd",
+    "build": "npm run build:lib && npm run build:parser && npm run build:issuemd && npm run build:next",
     "build:lib": "node scripts/lib-builder.js",
     "build:parser": "fs.mkdirp components/lib && pegjs -e '/* eslint-disable */\nvar parser; export default parser' < components/issuemd/parser.pegjs > components/lib/issuemd-parser.js",
     "build:issuemd-echo": "rollup -f umd -n issuemd components/issuemd/core.js",
-    "build:issuemd": "npm run build:issuemd-echo --silent | buble | uglifyjs > issuemd.min.js && replace __ISSUEMD_VERSION__ $npm_package_version issuemd.min.js",
+    "build:issuemd": "npm run build:issuemd-echo --silent | buble | uglifyjs > static/issuemd.min.js && replace __DEVELOPMENT_VERSION__ $npm_package_version static/issuemd.min.js",
+    "build:next": "next build",
     "build:app-echo": "rollup -f umd -n app -c scripts/rollup-loadfile.js src/www/app.js"
   },
   "repository": {
