@@ -1,27 +1,36 @@
-const { createServer } = require('http')
+// require core node dependencies
 const { parse } = require('url')
-const next = require('next')
-const packageJson = require('../package.json')
 
+// require external dependencies
+const { send } = require('micro')
+const next = require('next')
+
+// set dev/prod flag
 const dev = process.env.NODE_ENV !== 'production' && !process.env.NOW
+
+// bootstrap next.js app
+let nextReady = false
 const app = next({ dev })
 const handle = app.getRequestHandler()
+app.prepare().then(() => { nextReady = true })
 
-app.prepare().then(() => {
-  createServer((req, res) => {
-    const parsedUrl = parse(req.url, true)
-    const { pathname, query } = parsedUrl
+// configure micro-rest-fs router
+const match = require('fs-router')(__dirname + '/api')
 
-    if (pathname === '/config') {
-      res.setHeader('Content-Type', 'application/json')
-      res.end(JSON.stringify({
-        version: packageJson.version
-      }))
+// export micro request handler
+module.exports = async (req, res) => {
+  // if request header is application/json, handle as api from routed micro services
+  // else handle with next app (or send 503 error until next app warmed up)
+  if (req.headers['content-type'] === 'application/json') {
+    // get matched handler for request and execute
+    // else send 404 error
+    const matched = match(req)
+    if (matched) {
+      return await matched(req, res)
     } else {
-      handle(req, res, parsedUrl)
+      return send(res, 404, { error: 'Not found' })
     }
-  }).listen(3000, (err) => {
-    if (err) throw err
-    console.log('> Ready on http://localhost:3000')
-  })
-})
+  } else {
+    return nextReady ? handle(req, res, parse(req.url, true)) : send(res, 503, { error: 'warming up server' })
+  }
+}

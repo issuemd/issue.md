@@ -15,7 +15,7 @@ export default class Main extends React.Component {
   componentDidMount () {
     global.issuemd = issuemd
     console.log(issuemd({title: 'cool'}).md())
-    fetch('/config').then(r => r.json()).then(config => this.setState({
+    fetch('/config', {headers: {'content-type': 'application/json'}}).then(r => r.json()).then(config => this.setState({
       server: config.version,
       issuemd: issuemd.version
     }))

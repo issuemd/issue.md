@@ -1,9 +1,9 @@
 {
   "name": "issue.md",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "issue.md website",
   "scripts": {
-    "start": "node server",
+    "start": "micro server",
     "test": "npm run test:unit && npm run test:lint && npm run test:coverage",
     "test:unit": "jest",
     "test:lint": "standard '{components,scripts,test,pages}/**/*.js'",
@@ -30,8 +30,10 @@
     "blueimp-md5": "^2.1.0",
     "chance": "^1.0.4",
     "es6-promise": "^4.0.5",
+    "fs-router": "^0.3.0",
     "isomorphic-fetch": "^2.2.1",
     "marked": "^0.3.6",
+    "micro": "^7.3.2",
     "mustache": "^2.2.0"
   },
   "devDependencies": {
