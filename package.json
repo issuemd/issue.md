@@ -27,6 +27,7 @@
   },
   "homepage": "http://issuemd.surge.sh",
   "dependencies": {
+    "babel-preset-latest": "^6.24.1",
     "blueimp-md5": "^2.1.0",
     "chance": "^1.0.4",
     "es6-promise": "^4.0.5",
