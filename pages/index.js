@@ -3,7 +3,6 @@ import React from 'react'
 import Head from 'next/head'
 
 export default class Main extends React.Component {
-
   constructor (props) {
     super(props)
     this.state = {

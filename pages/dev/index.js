@@ -6,7 +6,6 @@ import { Well } from '../../components'
 import issuemd from '../../components/issuemd/core.js'
 
 export default class Main extends React.Component {
-
   componentDidMount () {
     console.log(issuemd({title: 'cooler beans'}).md())
     fetch('/issues').then(r => r.text()).then(txt => console.log(txt))

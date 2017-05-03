@@ -139,7 +139,7 @@ export function filter (collection, first, second) {
       var match = false
 
       utils.each(values, function (value) {
-        if (!match && (utils.type(value) === 'regexp' && value.test(attrValue)) || attrValue === value) {
+        if ((!match && (utils.type(value) === 'regexp' && value.test(attrValue))) || attrValue === value) {
           match = true
           return match
         }

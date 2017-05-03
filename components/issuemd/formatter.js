@@ -128,19 +128,19 @@ function getFormatterUtils (widest, cols, colorisationFunctions) {
     padright: padright,
     curtailed: curtailed,
     bkey: function () {
-      return colorisationFunctions && colorisationFunctions.bkey || renderEcho
+      return (colorisationFunctions && colorisationFunctions.bkey) || renderEcho
     },
     bsep: function () {
-      return colorisationFunctions && colorisationFunctions.bsep || renderEcho
+      return (colorisationFunctions && colorisationFunctions.bsep) || renderEcho
     },
     htext: function () {
-      return colorisationFunctions && colorisationFunctions.htext || renderEcho
+      return (colorisationFunctions && colorisationFunctions.htext) || renderEcho
     },
     hsep: function () {
-      return colorisationFunctions && colorisationFunctions.hsep || renderEcho
+      return (colorisationFunctions && colorisationFunctions.hsep) || renderEcho
     },
     btext: function () {
-      return colorisationFunctions && colorisationFunctions.btext || renderEcho
+      return (colorisationFunctions && colorisationFunctions.btext) || renderEcho
     }
   }
 
