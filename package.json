@@ -42,7 +42,7 @@
     "buble": "^0.15.2",
     "es6-promise": "^4.0.5",
     "fs-dot": "^2.0.0",
-    "fs-router": "^0.3.0",
+    "fs-router": "^0.4.0",
     "isomorphic-fetch": "^2.2.1",
     "jest": "^19.0.2",
     "micro": "^7.3.2",
