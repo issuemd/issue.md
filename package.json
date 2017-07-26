@@ -27,7 +27,7 @@
   },
   "homepage": "http://issuemd.surge.sh",
   "dependencies": {
-    "blueimp-md5": "^2.1.0",
+    "blueimp-md5": "2.7.0",
     "chance": "^1.0.4",
     "marked": "^0.3.6",
     "mustache": "^2.2.0"
