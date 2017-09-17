@@ -41,7 +41,7 @@
     "babel-preset-react": "^6.23.0",
     "buble": "^0.15.2",
     "es6-promise": "^4.0.5",
-    "fs-dot": "^2.0.0",
+    "fs-dot": "^4.0.2",
     "fs-router": "^0.3.0",
     "isomorphic-fetch": "^2.2.1",
     "jest": "^19.0.2",
