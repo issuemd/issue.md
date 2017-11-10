@@ -51,7 +51,7 @@
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "replace": "^0.3.0",
-    "rollup": "^0.41.4",
+    "rollup": "^0.51.3",
     "standard": "^10.0.2",
     "uglify-js": "^2.8.22"
   }
